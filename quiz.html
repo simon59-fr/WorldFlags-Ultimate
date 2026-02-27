@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>WorldFlags Ultimate - Quiz</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body { text-align:center; }
+    #flag-img { width: 200px; height: 120px; object-fit: cover; border:1px solid #000; margin-top:20px; }
+    #score, #timer { font-size: 18px; margin-top:10px; }
+    #input-answer { padding:10px; width:200px; font-size:16px; }
+    #submit-btn { padding:10px 20px; font-size:16px; margin-left:10px; }
+  </style>
+</head>
+<body>
+
+  <h1>🔥 Quiz 15 min</h1>
+  <a href="index.html" style="display:inline-block;margin-top:10px;">⬅ Retour</a>
+
+  <div id="quiz-container" style="margin-top:30px;">
+    <img id="flag-img" src="" alt="Drapeau">
+    <p>
+      <input type="text" id="input-answer" placeholder="Nom du pays">
+      <button id="submit-btn">Valider</button>
+    </p>
+    <p id="score">Score : 0 / 0</p>
+    <p id="timer">Temps restant : 15:00</p>
+    <p id="feedback" style="font-weight:bold;color:green;"></p>
+  </div>
+
+  <script src="js/countries.js"></script>
+  <script src="js/quiz.js"></script>
+
+</body>
+</html>
