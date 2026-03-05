@@ -1,45 +1,55 @@
+// js/learn.js
+
 const container = document.getElementById("countries-container");
+const statusText = document.getElementById("learn-status");
 
-function showCountries() {
-  countries.forEach(country => {
-    const div = document.createElement("div");
-    div.style.border = "1px solid #ccc";
-    div.style.borderRadius = "8px";
-    div.style.margin = "10px";
-    div.style.padding = "10px";
-    div.style.width = "180px";
-    div.style.textAlign = "center";
-    div.style.background = "#fff";
-
-    const img = document.createElement("img");
-    img.src = country.flag; // URL du drapeau
-    img.alt = country.name_en;
-    img.style.width = "100px";
-    img.style.height = "60px";
-    img.style.objectFit = "cover";
-    img.style.border = "1px solid #000";
-
-    const nameFr = document.createElement("p");
-    nameFr.textContent = country.name_fr;
-
-    const nameEn = document.createElement("p");
-    nameEn.textContent = country.name_en;
-
-    const nameDe = document.createElement("p");
-    nameDe.textContent = country.name_de;
-
-    const code = document.createElement("p");
-    code.textContent = "Abréviation : " + country.code;
-
-    div.appendChild(img);
-    div.appendChild(nameFr);
-    div.appendChild(nameEn);
-    div.appendChild(nameDe);
-    div.appendChild(code);
-
-    container.appendChild(div);
-  });
+function shuffle(array) {
+  return array.sort(() => Math.random() - 0.5);
 }
 
-// Affiche les pays après chargement
-showCountries();
+function createCard(country) {
+  const div = document.createElement("div");
+  div.className = "country-card";
+
+  const img = document.createElement("img");
+  img.src = country.flag;
+  img.alt = country.name_en;
+
+  const fr = document.createElement("p");
+  fr.textContent = `FR : ${country.name_fr}`;
+
+  const en = document.createElement("p");
+  en.textContent = `EN : ${country.name_en}`;
+
+  const de = document.createElement("p");
+  de.textContent = `DE : ${country.name_de}`;
+
+  const code = document.createElement("p");
+  code.textContent = `Code : ${country.code}`;
+
+  div.appendChild(img);
+  div.appendChild(fr);
+  div.appendChild(en);
+  div.appendChild(de);
+  div.appendChild(code);
+
+  return div;
+}
+
+async function initLearn() {
+  statusText.textContent = "Chargement des pays…";
+
+  const list = await window.countriesReady;
+
+  if (!list || list.length === 0) {
+    statusText.textContent = "❌ Impossible de charger les pays (API). Vérifie ta connexion.";
+    return;
+  }
+
+  statusText.textContent = `✅ ${window.countries.length} pays chargés (ordre aléatoire)`;
+
+  const mixed = shuffle([...window.countries]);
+  mixed.forEach(country => container.appendChild(createCard(country)));
+}
+
+initLearn();§§

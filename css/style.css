@@ -1,29 +1,162 @@
+/* ===== RESET SIMPLE ===== */
+* { box-sizing: border-box; }
+body { margin: 0; padding: 0; font-family: Arial, sans-serif; }
+
+/* ===== GLOBAL ===== */
 body {
-  font-family: Arial, sans-serif;
+  background: #f3f6fb;
+  color: #111827;
   text-align: center;
-  background: #f4f6f8;
 }
 
 h1 {
-  margin-top: 40px;
+  margin: 28px 10px 10px;
 }
 
+p {
+  margin: 8px 10px;
+}
+
+/* ===== LIENS ===== */
+a {
+  color: #2563eb;
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+.back-link {
+  display: inline-block;
+  margin: 10px 0 18px;
+  font-weight: bold;
+}
+
+/* ===== MENU (index) ===== */
 .menu {
-  margin-top: 50px;
+  margin: 30px auto 0;
+  width: min(420px, 92%);
 }
-
 .menu a {
   display: block;
-  margin: 20px auto;
-  padding: 15px;
-  width: 250px;
-  background: #2c3e50;
+  padding: 14px 16px;
+  margin: 12px 0;
+  border-radius: 12px;
+  background: #1f2937;
   color: white;
-  text-decoration: none;
-  border-radius: 8px;
   font-size: 18px;
 }
+.menu a:hover { background: #111827; }
 
-.menu a:hover {
-  background: #34495e;
+/* ===== CARD ===== */
+.card {
+  width: min(760px, 92%);
+  margin: 18px auto;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.08);
+}
+
+/* ===== QUIZ ===== */
+.loading {
+  font-weight: bold;
+  color: #6b7280;
+  margin-bottom: 12px;
+}
+
+.quiz-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.flag {
+  width: 280px;
+  height: 170px;
+  object-fit: cover;
+  border: 1px solid #111827;
+  border-radius: 10px;
+  margin: 12px auto 14px;
+  display: none; /* sera affiché par JS quand prêt */
+}
+
+.answer-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+
+#input-answer {
+  width: min(360px, 92%);
+  padding: 12px 14px;
+  font-size: 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  outline: none;
+}
+#input-answer:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+#submit-btn {
+  padding: 12px 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  background: #16a34a;
+  color: white;
+  cursor: pointer;
+}
+#submit-btn:hover { background: #12813a; }
+#submit-btn:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.feedback {
+  font-weight: bold;
+  min-height: 24px;
+}
+
+/* ===== MODE APPRENTISSAGE ===== */
+.countries-grid {
+  width: min(1180px, 96%);
+  margin: 18px auto 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+.country-card {
+  width: 210px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 12px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+}
+
+.country-card img {
+  width: 120px;
+  height: 74px;
+  object-fit: cover;
+  border: 1px solid #111827;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.country-card p {
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  margin: 40px 0 20px;
+  color: #6b7280;
 }
